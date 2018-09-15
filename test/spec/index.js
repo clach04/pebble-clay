@@ -252,7 +252,7 @@ describe('Clay', function() {
       Pebble.platform = 'pypkjs';
       assert.match(
         clay.generateUrl(),
-        /^http:\/\/clay\.pebble\.com\.s3-website-us-west-2\.amazonaws.com\/#/
+        /^http:\/\/clach04\.github\.io\/pebble\/clay\/emulator\.html#/
       );
     });
 
