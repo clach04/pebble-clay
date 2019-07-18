@@ -174,7 +174,7 @@ Clay.prototype.generateUrl = function() {
   if (emulator) {
     return Clay.encodeDataUri(
       compiledHtml,
-      'http://clach04.github.io/pebble/clay/emulator.html#'
+      'http://clach04.github.io/pebble/clay/#'
     );
   }
 
