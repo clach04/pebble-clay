@@ -174,7 +174,7 @@ Clay.prototype.generateUrl = function() {
   if (emulator) {
     return Clay.encodeDataUri(
       compiledHtml,
-      'http://clay.pebble.com.s3-website-us-west-2.amazonaws.com/#'
+      'https://kennedn.root.sx/clay/#'
     );
   }
 
