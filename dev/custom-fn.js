@@ -1,36 +1,85 @@
-'use strict';
+module.exports = function(minified) {
 
-module.exports = function() {
+  var clayConfig = this;
+  var _ = minified._;
+  var $ = minified.$;
+  var HTML = minified.HTML;
 
-  /** @type {ClayConfig} */
-  var Clay = window.Clay = this;
+clayConfig.on(clayConfig.EVENTS.AFTER_BUILD, function() {
 
-  /**
-   * @returns {void}
-   */
-  function toggleBackground() {
-    if (this.get()) {
-      Clay.getItemByMessageKey('colorTest').enable();
-    } else {
-      Clay.getItemByMessageKey('colorTest').disable();
-    }
-  }
+  // var button_types = ['up', 'up_hold', 'mid', 'mid_hold', 'down', 'down_hold']
+  var submitButton = clayConfig.getItemById('Submit');
+  // var addTile = clayConfig.getItemById('AddTile');
 
-  /**
-   * @returns {void}
-   */
-  function handleButtonClick() {
-    Clay.config = Clay.meta.userData.config2;
-    Clay.build();
-  }
-
-  Clay.on(Clay.EVENTS.AFTER_BUILD, function() {
-    var coolStuffToggle = Clay.getItemByMessageKey('cool_stuff');
-    toggleBackground.call(coolStuffToggle);
-    coolStuffToggle.on('change', toggleBackground);
-
-    Clay.getItemById('testButton').on('click', handleButtonClick);
+  var items = clayConfig.getItemsByGroup('tile.0');
+  // var header = clayConfig.getItemById('tile$0');
+  // var up_type = clayConfig.getItemById('up_type_0')
+  var textarea = $("textarea");
+  $(textarea).on('input', function() {
+    this.set("$height", this[0].scrollHeight + "px");
   });
+  
+  var clayJSON = clayConfig.getItemById('ClayJSON');
+  var claySubmit = clayConfig.getItemById('ClaySubmit');
+  clayJSON.hide();
+  clayJSON.set('');
+  claySubmit.hide();
 
-  console.log('userData: ', Clay.meta.userData);
+//   iconButton.on('click', function() {
+//     var t_json = {"action": "LoadIcon", "payload": clayConfig.getItemById('0_iurl').get()};
+//     clayJSON.set(JSON.stringify(t_json));
+//     claySubmit.trigger('submit');
+//     });
+  // addTile.on('click', function() {
+  //     var t_json = {"action": "AddTile"};
+  //     clayJSON.set(JSON.stringify(t_json));
+  //     claySubmit.trigger('submit');
+  //   });
+
+  // var toggle = true;
+  // header.on('click', function() {
+  //   toggle = !toggle;
+  //   if (toggle) {
+  //     items.forEach(function(i) {i.show();})
+  //   } else {
+  //     items.forEach(function(i) {i.hide();})
+  //   }
+  // });
+
+  // up_type.on('change', function() {
+  //   clayConfig.getAllItems().filter(function(elm) {
+  //     return elm.id != null && elm.id.startsWith('up.')
+  //   }).forEach(function(elm) {
+  //     if (up_type.get('value') == 'rest') {
+  //       elm.show();
+  //     } else {
+  //       elm.hide();
+  //     }
+  //   });
+  // })
+  // up_type.trigger('change');
+
+  submitButton.on('click', function () {
+      // var failed_items = $('div', 'form', false).find(function(elm, idx ){ 
+      //                       if ($(elm).get('$display') != 'none') { 
+      //                         var input = $('input', elm, false)[0];
+      //                         if (input != null && !input.reportValidity()) {
+      //                           return elm; 
+      //                         }
+      //                       }
+      //                     });
+      // if (failed_items != null) { return; }
+
+      var t_json = {"action": "Submit", "payload": []};
+      var items = clayConfig.getAllItems();
+      items.forEach(function(item, index) {
+        var t_dict = { "id": item.id, "value": item.get() };
+        console.log(JSON.stringify(t_dict));
+         t_json.payload.push(t_dict);
+       });
+      clayJSON.set(JSON.stringify(t_json));
+      // clayConfig.getItemById('')
+      claySubmit.trigger('submit');
+    });
+  });
 };
