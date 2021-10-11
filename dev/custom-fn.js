@@ -4,7 +4,9 @@ module.exports = function(minified) {
   var _ = minified._;
   var $ = minified.$;
   var HTML = minified.HTML;
-
+window.onload = function() {
+  
+}
 clayConfig.on(clayConfig.EVENTS.AFTER_BUILD, function() {
 
   // var button_types = ['up', 'up_hold', 'mid', 'mid_hold', 'down', 'down_hold']
@@ -16,9 +18,10 @@ clayConfig.on(clayConfig.EVENTS.AFTER_BUILD, function() {
   // var up_type = clayConfig.getItemById('up_type_0')
   var textarea = $("textarea");
   $(textarea).on('input', function() {
-    this.set("$height", this[0].scrollHeight + "px");
+    this.set('$height', 'auto');
+    this.set('$height', this[0].scrollHeight + "px");
   });
-  
+  $(textarea).trigger('input');
   var clayJSON = clayConfig.getItemById('ClayJSON');
   var claySubmit = clayConfig.getItemById('ClaySubmit');
   clayJSON.hide();

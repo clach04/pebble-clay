@@ -31,7 +31,7 @@
     border: none;
     color: $color-white;
     font-size: inherit;
-    overflow: hidden;
+    overflow-y: hidden;
 
     @include placeholder {
       color: $color-gray-8;
