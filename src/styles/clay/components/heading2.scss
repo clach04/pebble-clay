@@ -1,0 +1,38 @@
+@import "bourbon";
+@import "clay";
+
+.component-heading {
+
+  .head {
+    @include tap-highlight($color-gray-8);
+    $triangle-size: 0.85rem;
+    position: relative;
+    padding-right: $triangle-size + 0.25rem;
+    display: block;
+
+    &:after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 50%;
+      margin-top: -0.1rem;
+      @include triangle($triangle-size, $color-orange, down);
+    }
+  }
+}
+
+.hidden {
+
+  .head {
+    $triangle-size: 0.85rem;
+
+    &:after {
+      content: "";
+      position: absolute;
+      right: -0.3rem;
+      top: 50%;
+      margin-top: -0.3rem;
+      @include triangle($triangle-size, $color-orange, right);
+    }
+  }
+}

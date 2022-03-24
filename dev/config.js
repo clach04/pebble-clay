@@ -1,168 +1,429 @@
-'use strict';
-/* eslint-disable quotes */
-
-module.exports = [
+module.exports = 
+ [
   {
     "type": "heading",
-    "id": "main-heading",
-    "defaultValue": "Clay Test Page",
-    "size": 1
+    "defaultValue": "Stateful",
+    "id": "JSONHeading"
   },
   {
     "type": "text",
-    "defaultValue": "Some arbitrary text explaining how this all works. " +
-             "It's cool if this wraps across multiple lines"
+    "defaultValue": "Text is used to provide descriptions of sections or to explain complex parts of your page. Feel free to add any extra HTML you require to the defaultValue",
+    "id": "MainText"
+  },
+  {
+    "type": "text",
+    "defaultValue": "Error 404",
+    "id": "MessageText"
   },
   {
     "type": "section",
-    "capabilities": ["RECT", "MICROPHONE"],
     "items": [
       {
-        "type": "text",
-        "defaultValue": "This section is only visible for rectangular devices that" +
-                        " have a microphone"
-      }
+        "type": "heading2",
+        "defaultValue": "JSON Manager",
+        "id": "JSONHeading"
+      },
+      {
+        "type": "textarea",
+        "id": "JSONInput",
+        "label": "JSON",
+        "attributes": {
+          "autocapitalize": "off",
+          "autocorrect": "off",
+          "autocomplete": "off",
+          "spellcheck": "false"
+        }
+      },
+      {
+        "type": "button",
+        "id": "JSONSubmit",
+        "defaultValue": "Import",
+        "primary": true,
+      },
     ]
   },
   {
     "type": "section",
     "items": [
       {
-        "type": "heading",
-        "defaultValue": "This is a section"
+        "type": "heading2",
+        "defaultValue": "Icon Manager",
+        "id": "IconHeading",
+        "capabilities": ["NOT_PLATFORM_APLITE"]
       },
       {
-        "type": "text",
-        "defaultValue": "This is only visible for aplite",
-        "capabilities": ["APLITE"]
-      },
-      {
-        "type": "input",
-        "messageKey": "email",
-        "defaultValue": "",
-        "label": "Input Field",
-        "description": "This is a description for the input component. " +
-                       "You can add <strong>html</strong> in here too.",
-        "attributes": {
-          "placeholder": "Placeholder set with attributes"
-        }
-      },
-      {
-        "type": "input",
-        "label": "Time Field",
-        "attributes": {
-          "type": "time"
-        }
-      },
-      {
-        "type": "input",
-        "label": "Date Field",
-        "attributes": {
-          "type": "date"
-        }
-      },
-      {
-        "type": "slider",
-        "messageKey": "slider",
-        "defaultValue": 0,
-        "label": "Slider",
-        "description": "This is the description for the slider",
-        "min": 0,
-        "max": 30,
-        "step": 0.25
-      },
-      {
-        "type": "toggle",
-        "messageKey": "cool_stuff",
-        "label": "This is a Toggle",
-        "defaultValue": false
-      },
-      {
-        "type": "toggle",
-        "messageKey": "arrayToggle[0]",
-        "label": "This is a Toggle",
-        "defaultValue": false
-      },
-      {
-        "type": "toggle",
-        "messageKey": "arrayToggle[1]",
-        "label": "This is a Toggle",
-        "defaultValue": false
-      },
-      {
-        "type": "color",
-        "messageKey": "colorTest",
-        "defaultValue": "FF0000",
-        "label": "Standard Color Picker",
-        "sunlight": false
-      },
-      {
-        "type": "color",
-        "messageKey": "sunnyColorTest",
-        "defaultValue": "00FF00",
-        "label": "Sunny Color Picker",
-        "sunlight": true
-      },
-      {
-        type: 'button',
-        id: 'testButton',
-        primary: false,
-        defaultValue: 'Generic Button',
-        description: 'This is a generic button. ' +
-                     'You can listen for standard events like "click"'
-      }
-    ]
-  },
-  {
-    "type": "section",
-    "items": [
-      {
-        "type": "heading",
-        "defaultValue": "More Settings"
-      },
-      {
-        "type": "radiogroup",
-        "messageKey": "radiogroup-test",
-        "label": "Radio Group",
+        "type": "select2",
+        "label": "Custom Icons",
+        "id": "IconIndex",
+        "defaultValue": "0",
         "options": [
-          { "label": "Test thing", "value": "one" },
-          { "label": "Another thing", "value": "two" },
-          { "label": "Final thing with <em>html</em>", "value": "three" }
-        ]
+          {"src": "#", "label": "", "value": 0}
+        ],
+        "capabilities": ["NOT_PLATFORM_APLITE"]
       },
       {
-        "type": "checkboxgroup",
-        "messageKey": "checkboxgroup-test",
-        "defaultValue": [0, 1, 0],
-        "label": "Checkbox Group",
-        "options": [ "First thing", "Another thing", "Final thing" ]
+        "type": "input",
+        "id": "IconName",
+        "label": "<font style='color:#ff4700;'>* </font>Name",
+        "defaultValue": "",
+        "attributes": {
+          "autocapitalize": "on",
+          "autocorrect": "off",
+          "autocomplete": "off",
+          "spellcheck": false,
+          "required": true
+        },
+        "capabilities": ["NOT_PLATFORM_APLITE"]
+      },
+      {
+        "type": "input",
+        "id": "IconURL",
+        "label": "<font style='color:#ff4700;'>* </font>URL",
+        "attributes": {
+          "autocapitalize": "off",
+          "autocorrect": "off",
+          "autocomplete": "off",
+          "type": "url",
+          "spellcheck": false,
+          "required": true
+        },
+        "capabilities": ["NOT_PLATFORM_APLITE"]
+      },
+      {
+        "type": "button",
+        "id": "IconSubmit",
+        "defaultValue": "Submit",
+        "primary": true,
+        "capabilities": ["NOT_PLATFORM_APLITE"]
+      },
+    ]
+  },
+  {
+    "type": "section",
+    "items": [
+      {
+        "type": "heading2",
+        "defaultValue": "Global",
+        "id": "GlobalHeading"
       },
       {
         "type": "select",
-        "messageKey": "flavor",
-        "defaultValue": "grape",
-        "label": "Select Menu",
+        "label": "Default Index",
+        "id": "GlobalIndex",
+        "defaultValue": "0",
         "options": [
-          { "label": "", "value": "" },
-          { "label": "Berry", "value": "berry" },
-          { "label": "This Option is Selected", "value": "grape" },
-          { "label": "Banana", "value": "banana" },
-          {
-            "label": "This is an optgroup",
-            "value": [
-              { "label": "Peach", "value": "peach" },
-              { "label": "Mango", "value": "mango" }
-            ]
-          }
         ],
+      },
+      {
+        "type": "toggle",
+        "label": "Open Default",
+        "id": "GlobalToggle",
+      },
+      {
+        "type": "input",
+        "id": "GlobalURL",
+        "label": "Base URL",
         "attributes": {
-          "required": "required"
+          "autocapitalize": "off",
+          "autocorrect": "off",
+          "autocomplete": "off",
+          "type": "url",
+          "spellcheck": "false"
+        }
+      },
+      {
+        "type": "textarea",
+        "id": "GlobalHeaders",
+        "label": "Global Headers",
+        "defaultValue": "{}",
+        "attributes": {
+          "autocapitalize": "off",
+          "autocorrect": "off",
+          "autocomplete": "off",
+          "spellcheck": "false"
+        }
+      },
+    ]
+  },
+  {
+    "type": "section",
+    "items": [
+      {
+        "type": "heading2",
+        "defaultValue": "Tile",
+        "id": "TileHeading"
+      },
+      {
+        "type": "select",
+        "label": "Tile Selection",
+        "id": "TileIndex",
+        "defaultValue": "0",
+        "options": [
+        ],
+      },
+      {
+        "type": "input",
+        "id": "TileName",
+        "label": "<font style='color:#ff4700;'>* </font>Name",
+        "attributes": {
+          "required": true,
+          "maxLength": 20,
+        },
+      },
+      {
+        "type": "color",
+        "id": "TileColor",
+        "defaultValue": "000000",
+        "label": "Color",
+        "layout": "COLOR",
+        "sunlight": true,
+        "capabilities": ["COLOR"]
+      },
+      {
+        "type": "color",
+        "id": "TileHighlight",
+        "defaultValue": "ffffff",
+        "label": "Highlight",
+        "layout": "COLOR",
+        "sunlight": true,
+        "capabilities": ["COLOR"]
+      },
+      {
+        "type": "select2",
+        "id": "TileIcon",
+        "defaultValue": 0,
+        "label": "Icon",
+        "options": [
+          {"src": "#", "label": "", "value": 0}
+        ],
+      }
+    ]
+  },
+  {
+    "type": "section",
+    "items": [
+      {
+        "type": "heading2",
+        "defaultValue": "Button",
+        "id": "ButtonHeading"
+      },
+      {
+        "type": "select",
+        "label": "Button Selection",
+        "id": "ButtonIndex",
+        "defaultValue": "up",
+        "options": [
+          {"label": "Up", "value": "up"},
+          {"label": "Middle", "value": "mid"},
+          {"label": "Down", "value": "down"},
+          {"label": "Up Overflow", "value": "up_hold"},
+          {"label": "Middle Overflow", "value": "mid_hold"},
+          {"label": "Down Overflow", "value": "down_hold"},
+        ],
+      },
+      {
+        "type": "select",
+        "label": "Button Type",
+        "id": "ButtonType",
+        "defaultValue": "3",
+        "options": [
+          { "label": "Local", "value": 0 }, 
+          { "label": "Stateful", "value": 1 }, 
+          { "label": "Status only", "value": 2 }, 
+          { "label": "Disabled", "value": 3 }
+        ],
+      },
+      {
+        "type": "input",
+        "id": "ButtonName",
+        "label": "<font style='color:#ff4700;'>* </font>Name",
+        "attributes": {
+          "required": true,
+          "maxLength": 18,
+        },
+      },
+      {
+        "type": "select2",
+        "id": "ButtonIcon",
+        "defaultValue": 0,
+        "label": "Icon",
+        "options": [
+          {"src": "#", "label": "", "value": 0}
+        ],
+      }
+    ]
+  },
+  {
+    "type": "section",
+    "items": [
+      {
+        "type": "heading2",
+        "defaultValue": "Button <font style='color:#ff4700;'>[ACTION]</font>",
+        "id": "ButtonActionHeading"
+      },
+      {
+        "type": "select",
+        "id": "ButtonMethod",
+        "defaultValue": "PUT",
+        "label": "<font style='color:#ff4700;'>*</font> Method",
+        "options": [
+          { "label": "GET", "value": "GET"},
+          { "label": "POST", "value": "POST"},
+          { "label": "PUT", "value": "PUT"},
+          { "label": "DELETE", "value": "DELETE"}
+        ],
+      },
+      {
+        "type": "input",
+        "id": "ButtonURL",
+        "label": "<font style='color:#ff4700;'>*</font> URL",
+        "attributes": {
+          "autocapitalize": "off",
+          "autocorrect": "off",
+          "autocomplete": "off",
+          "spellcheck": "false",
+          "required": true,
+        }
+      },
+      {
+        "type": "textarea",
+        "id": "ButtonHeaders",
+        "label": "Headers",
+        "defaultValue": "{}",
+        "attributes": {
+          "autocapitalize": "off",
+          "autocorrect": "off",
+          "autocomplete": "off",
+          "spellcheck": "false"
+        }
+      },
+      {
+        "type": "textarea",
+        "id": "ButtonData",
+        "label": "Data",
+        "defaultValue": "{}",
+        "attributes": {
+          "autocapitalize": "off",
+          "autocorrect": "off",
+          "autocomplete": "off",
+          "spellcheck": "false"
         }
       }
     ]
   },
   {
-    "type": "submit",
-    "defaultValue": "Save"
+    "type": "section",
+    "items": [
+      {
+        "type": "heading2",
+        "defaultValue": "Button <font style='color:#ff4700;'>[STATUS]</font>",
+        "id": "ButtonStatusHeading"
+      },
+      {
+        "type": "select",
+        "id": "ButtonStatusMethod",
+        "defaultValue": "PUT",
+        "label": "<font style='color:#ff4700;'>*</font> Method",
+        "options": [
+          { "label": "GET", "value": "GET"},
+          { "label": "POST", "value": "POST"},
+          { "label": "PUT", "value": "PUT"},
+          { "label": "DELETE", "value": "DELETE"}
+        ],
+      },
+      {
+        "type": "input",
+        "id": "ButtonStatusURL",
+        "label": "<font style='color:#ff4700;'>*</font> URL",
+        "attributes": {
+          "autocapitalize": "off",
+          "autocorrect": "off",
+          "autocomplete": "off",
+          "required": true,
+          "spellcheck": "false"
+        }
+      },
+      {
+        "type": "textarea",
+        "id": "ButtonStatusHeaders",
+        "label": "Headers",
+        "defaultValue": "{}",
+        "attributes": {
+          "autocapitalize": "off",
+          "autocorrect": "off",
+          "autocomplete": "off",
+          "spellcheck": "false"
+        }
+      },
+      {
+        "type": "textarea",
+        "id": "ButtonStatusData",
+        "label": "Data",
+        "defaultValue": "{}",
+        "attributes": {
+          "autocapitalize": "off",
+          "autocorrect": "off",
+          "autocomplete": "off",
+          "spellcheck": "false"
+        }
+        
+      },
+      {
+        "type": "input",
+        "id": "ButtonStatusVariable",
+        "label": "<font style='color:#ff4700;'>*</font> Variable",
+        "attributes": {
+          "autocapitalize": "off",
+          "autocorrect": "off",
+          "autocomplete": "off",
+          "required": true,
+          "spellcheck": "false"
+        }
+      },
+      {
+        "type": "input",
+        "id": "ButtonStatusGood",
+        "label": "<font style='color:#ff4700;'>*</font> <font style='color:green;'>Good Value</font>",
+        "attributes": {
+          "autocapitalize": "off",
+          "autocorrect": "off",
+          "autocomplete": "off",
+          "required": true,
+          "spellcheck": "false"
+        }
+      },
+      {
+        "type": "input",
+        "id": "ButtonStatusBad",
+        "label": "<font style='color:#ff4700;'>*</font> <font style='color:red;'>Bad Value</font>",
+        "attributes": {
+          "autocapitalize": "off",
+          "autocorrect": "off",
+          "autocomplete": "off",
+          "required": true,
+          "spellcheck": "false"
+        }
+      }
+    ]
+  },
+  {
+    "type": "section",
+    "items": [
+      {
+        "type": "button",
+        "id": "ClaySubmit",
+        "defaultValue": "Submit",
+        "primary": true,
+      },
+      {
+        "type": "input",
+        "messageKey": "ClayJSON",
+        "id": "ClayJSON",
+        "attributes": {
+          "type": "text",
+          "style": "display: none;"
+        }
+      }
+    ]
   }
-];
+]

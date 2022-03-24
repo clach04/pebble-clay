@@ -84,10 +84,21 @@ function ClayConfig(settings, config, $rootContainer, meta) {
         _items.push(clayItem);
 
         // set the value of the item via the manipulator to ensure consistency
-        var value = typeof _settings[_item.messageKey] !== 'undefined' ?
-          _settings[_item.messageKey] :
-          _item.defaultValue;
+        var value;
+        //If localStorage contains an entry for the items messageKey
+        if (typeof _settings[_item.messageKey] !== 'undefined') {
+          value = _settings[_item.messageKey];
+        } 
+        //If localStorage contains an entry for the items id
+        else if (typeof _settings[_item.id] !== 'undefined') {
+          value = _settings[_item.id];
+        } 
+        //just set the defaultValue from the config file
+        else {
+          value = _item.defaultValue;
+        }
 
+        //Set value of item
         clayItem.set(typeof value !== 'undefined' ? value : '');
 
         $container.add(clayItem.$element);

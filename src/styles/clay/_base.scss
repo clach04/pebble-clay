@@ -172,6 +172,7 @@ label {
   > .component-heading:first-child {
     background: $color-gray-3;
     border-radius: $border-radius $border-radius 0 0;
+    
 
     // don't show the separator for the first non-hidden item after the heading
     &:after,
