@@ -1,13 +1,13 @@
-# project  configured on Tue Oct 12 00:02:41 2021 by
+# project  configured on Thu Mar 24 19:30:38 2022 by
 # waf 1.7.11 (abi 98, python 20711f0 on linux2)
 # using /home/kennedn/.pebble-sdk/SDKs/current/sdk-core/pebble/waf configure
 #
 ----------------------------------------
 Setting top to
-/home/kennedn/Projects/clay3
+/home/kennedn/Projects/clay
 ----------------------------------------
 Setting out to
-/home/kennedn/Projects/clay3/build
+/home/kennedn/Projects/clay/build
 ----------------------------------------
 Checking for program webpack
 /home/kennedn/.pebble-sdk/SDKs/current/node_modules/.bin/webpack

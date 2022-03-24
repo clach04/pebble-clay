@@ -3,6 +3,7 @@ module.exports = {
   color: require('./color'),
   footer: require('./footer'),
   heading: require('./heading'),
+  heading2: require('./heading2'),
   input: require('./input'),
   textarea: require('./textarea'),
   select: require('./select'),

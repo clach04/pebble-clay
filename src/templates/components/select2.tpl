@@ -2,7 +2,7 @@
   <label class="tap-highlight">
     <span class="label">{{{label}}}</span>
     <span class="value">
-      <img class="image" src=""></img>
+      <img class="image" src="" width="18" height="18"></img>
     </span>
     <select data-manipulator-target {{each key: attributes}}{{key}}="{{this}}"{{/each}}>
       {{each options}}

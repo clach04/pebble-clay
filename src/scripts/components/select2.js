@@ -23,8 +23,8 @@ module.exports = {
     function setImageDisplay() {
       var selectedIndex = self.$manipulatorTarget.get('selectedIndex');
       var $options = self.$manipulatorTarget.select('option');
-      var value = $options[selectedIndex] && $options[selectedIndex];
-      $value.set('@src', value.getAttribute('src'));
+      var value = $options[selectedIndex];
+      if (value) {$value.set('@src', value.getAttribute('src'))};
     }
 
     setImageDisplay();
