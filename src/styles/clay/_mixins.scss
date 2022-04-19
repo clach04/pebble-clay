@@ -5,16 +5,16 @@
   font-weight: normal;
 
   @if $weight == normal or $weight == regular {
-    font-family: 'PFDinDisplayPro-Regular', PFDinDisplayProRegularWebfont, sans-serif;
+    font-family: 'PFDinDisplayPro-Regular', sans-serif;
   }
 
   @if $weight == medium {
     // iOS includes the PFDinDisplayPro-Medium in the webview but Android does not,
     // so we apply a faux bold on the regular weight.
-    font-family: 'PFDinDisplayPro-Medium', PFDinDisplayProRegularWebfont, sans-serif;
+    font-family: 'PFDinDisplayPro-Medium', sans-serif;
 
     .platform-android & {
-      font-family: PFDinDisplayProRegularWebfont, sans-serif;
+      font-family: sans-serif;
       font-weight: bold;
       letter-spacing: 0.025em;
     }
